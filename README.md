@@ -4,7 +4,7 @@
 
 A simple wrapper for the roadie v3.0.x gem.
 
-Needed to do some one-off or static HTML email files and don't have the patience to inline your styles? Try this.
+Need to do some one-off or static HTML email files and don't have the patience to inline your styles? Try this.
 
 ## Installation
 
