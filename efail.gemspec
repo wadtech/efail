@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Peter Mellett"]
   spec.email         = ["pjm@petermellett.co.uk"]
   spec.summary       = %q{A simple wrapper for Roadie v3+ gem to render html email with external stylesheet dependencies from the command line.}
-  spec.description   = spec.summary
+  spec.description   = spec.summary + ' Because inlining styles is so 1996'
   spec.homepage      = "http://github.com/wadtech/efail"
   spec.license       = "MIT"
   spec.files         = %w(LICENSE.txt README.md Rakefile efail.gemspec)
