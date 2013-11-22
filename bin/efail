@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+require 'efail'
+require 'optparse'
+require 'uri'
+
+options = {
+  url: nil,
+  force_overwrite: false
+}
+
+banner = "Usage: #{File.basename(__FILE__)} [options] source outfile"
+OptionParser.new do |opts|
+  opts.banner = banner
+
+  opts.on("-f", "--force") do |f|
+    options[:force_overwrite] = f
+  end
+  opts.on("-u", "--url URL", "Asset base url for expanding relative links") do |url|
+    options[:url] = URI(url)
+  end
+end.parse!
+
+if ARGV.length < 2
+  puts banner
+  exit
+else
+  options[:src] = ARGV.shift
+  unless (File.exists? (File.expand_path options[:src]))
+      puts "No such source file #{options[:src]}"
+      exit
+  end
+
+  options[:dest] = ARGV.shift
+  if !options[:force_overwrite] && (File.exists? (File.expand_path options[:dest]))
+    puts "Destination file already exists, use the -f flag to overwrite."
+    exit
+  end
+end
+
+efail = Efail::Renderer.new options
+efail.render
